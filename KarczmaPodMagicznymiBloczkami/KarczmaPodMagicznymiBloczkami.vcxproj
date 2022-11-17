@@ -128,6 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="KarczmaPodMagicznymiBloczkami.cpp" />
+    <ClCompile Include="MenuManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MenuManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TestMenu.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
