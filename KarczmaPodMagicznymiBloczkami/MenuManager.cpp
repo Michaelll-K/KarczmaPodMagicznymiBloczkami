@@ -5,23 +5,16 @@
 
 using namespace std;
 
-//Deklarowanie struktury (tak jest naj³atwiej zwróciæ tablicê dwudymiarow¹)
-struct Menu
-{
-	string values[11][5];
-};
+string Menu[11][5];
 
 /// <summary>
-/// Funkcja do zwracania tablicy z ca³ym menu przez tablicê dwuwymiarow¹
-/// ¯eby skorzystaæ z funcji trzeba stworzyæ instancjê struktury Menu i przypisaæ do niego wartoœæ zwrotn¹ z metody
-/// Aby skorzystaæ z wynuku nale¿y odnieœæ siê do elementu struktury poprzez .values
+/// Funkcja wype³nia tablicê dwuwymiarow¹ Menu[][] z ca³ym menu
+/// ¯eby skorzystaæ z funcji trzeba j¹ wywo³aæ przed zaczêciem pracy z tablic¹
 /// </summary>
-/// <param name="path">œcierzka do pliku (testowo wpisywaæ "TestMenu.txt")</param>
-/// <returns>Zwraca strukture z 11 elementow¹ tablic¹ dwuwymiarow¹ z tablicami 5 elementowymi</returns>
-Menu GetMenu(string path)
+/// <param name="path">Œcierzka do pliku (testowo wpisywaæ "TestMenu.txt")</param>
+/// <returns>Wype³nia 11 elementow¹ tablicê dwuwymiarow¹ z tablicami 5 elementowymi o nazwie Menu</returns>
+void GetMenu(string path)
 {
-	Menu menu;
-
 	int lineIterator = 0;
 	int cellIterator = 0;
 
@@ -38,7 +31,7 @@ Menu GetMenu(string path)
 				cell = cell + line[i];
 			else
 			{
-				menu.values[lineIterator][cellIterator++] = cell;
+				Menu[lineIterator][cellIterator++] = cell;
 				cell = "";
 			}
 		}
@@ -47,6 +40,4 @@ Menu GetMenu(string path)
 	}
 
 	file.close();
-
-	return menu;
 }
