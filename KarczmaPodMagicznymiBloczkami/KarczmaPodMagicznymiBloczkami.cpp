@@ -6,6 +6,9 @@
 
 using namespace std;
 
+//Globalna zmienna uzupe³niana przez funkcjê GetMenu()
+extern string Menu[11][5];
+
 int main()
 {
     cout << "Testowanie tworzenia branchy i pull requestów" << endl;
