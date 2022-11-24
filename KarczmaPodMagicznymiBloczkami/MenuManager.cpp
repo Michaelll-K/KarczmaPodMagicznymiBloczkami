@@ -11,7 +11,7 @@ string Menu[11][5];
 /// Funkcja wype³nia tablicê dwuwymiarow¹ Menu[][] z ca³ym menu
 /// ¯eby skorzystaæ z funcji trzeba j¹ wywo³aæ przed zaczêciem pracy z tablic¹
 /// </summary>
-/// <param name="path">Œcierzka do pliku(testowo wpisywaæ "TestMenu.txt")</param>
+/// <param name="path">Œcierzka do pliku (testowo wpisywaæ "TestMenu.txt")</param>
 /// <returns>Wype³nia 11 elementow¹ tablicê dwuwymiarow¹ z tablicami 5 elementowymi o nazwie Menu</returns>
 void GetMenu(string path)
 {

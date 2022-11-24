@@ -14,5 +14,4 @@ int main()
     cout << "Testowanie tworzenia branchy i pull requestow" << endl;
     cout << "Dodatkowo merga sprawdze" << endl;
     cout << "(polecam sie zapoznac z ww nazewnictwem bo w swiecie programowania caly czas siê tego uzywa ;))" << endl;
-
 }
