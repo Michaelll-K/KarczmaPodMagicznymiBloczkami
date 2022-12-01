@@ -12,6 +12,5 @@ extern string Menu[11][5];
 
 int main()
 {
-
     return 0;
 }
