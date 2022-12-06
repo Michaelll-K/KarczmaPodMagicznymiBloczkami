@@ -3,6 +3,4 @@
 
 using namespace std;
 
-void GetMenu(string);
-
-void GetMenuOfProducts(string);
+string UserDish();

@@ -1,1 +1,6 @@
-1;Ry¿;0;
+1;Ry¿;1;
+2;Schab;1;
+3;Kotlet;1;
+4;Kraken;2;
+5;Tabasco;3;
+6;Jajko;1;

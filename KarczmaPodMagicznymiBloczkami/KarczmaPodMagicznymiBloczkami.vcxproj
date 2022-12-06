@@ -129,9 +129,11 @@
   <ItemGroup>
     <ClCompile Include="KarczmaPodMagicznymiBloczkami.cpp" />
     <ClCompile Include="MenuManager.cpp" />
+    <ClCompile Include="UserManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuManager.h" />
+    <ClInclude Include="UserManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="TestMenu.txt" />
