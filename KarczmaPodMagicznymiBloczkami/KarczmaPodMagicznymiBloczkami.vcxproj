@@ -136,6 +136,7 @@
     <ClInclude Include="UserManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Menu.txt" />
     <Text Include="TestMenu.txt" />
     <Text Include="TestProducts.txt" />
   </ItemGroup>
