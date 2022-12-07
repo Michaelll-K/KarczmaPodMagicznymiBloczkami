@@ -8,3 +8,4 @@
 8;Golonka z minotaura;50;golonka, kapusta niebieska, chlebki z magicznej many;2;
 9;Pajêcze oczy w polewie z magicznego py³u;25;pajêcze oczy, polewa z magicznego py³u, makaron ze strusich jajek,surówka z marchwi;1;
 10;¯abi skrzek z warzywami;30;¿abi skrzek, gotowane wodorosty, suszone pomidory z³ote, pietruszka z Ogrodów Elfich.;1;
+11;Twoje danie;70;Twoje sk³adniki;0;
