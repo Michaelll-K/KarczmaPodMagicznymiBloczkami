@@ -111,6 +111,29 @@ void ShowDinnerAmountSummary()
     cout << "\n" << endl;
 }
 
+
+void DinnerSummaryEditShow()
+{
+    cout << "Podsumowanie \n\n";
+    cout << "Twoje wybory, to: \n\n";
+    for (int k = 0; k < 11; k++)
+    {
+        if (SummaryDinnerTab[k] != 0)
+        {
+            cout << Menu[k][1] << "\n iloœæ porcji: " << SummaryDinnerTab[k] << "\n Pozycja w menu: " << Menu[k][0];
+            cout << endl;
+            cout << "\n" << endl;
+        }
+    }
+    do {
+        cout << "Czy potwierdzasz swoje zamówienie? \n";
+        cout << "1 - tak \n";
+        cout << "2 - nie \n";
+        cin >> confirm;
+    } while (confirm != 1 && confirm != 2);
+
+}
+
 void DinnerSummaryEdit()
 {
     do {
@@ -143,24 +166,7 @@ void DinnerSummaryEdit()
 
         SummaryDinnerTab[dinnerIndex - 1] = dinnerPortionIndex;
         cout << "Twoje zamówienie teraz to: \n";
-        cout << "Podsumowanie \n\n";
-        cout << "Twoje wybory, to: \n\n";
-        for (int k = 0; k < 11; k++)
-        {
-            if (SummaryDinnerTab[k] != 0)
-            {
-                cout << Menu[k][1] << "\n iloœæ porcji: " << SummaryDinnerTab[k] << "\n Pozycja w menu: " << Menu[k][0];
-                cout << endl;
-                cout << "\n" << endl;
-            }
-        }
-        do {
-            cout << "Czy potwierdzasz swoje zamówienie? \n";
-            cout << "1 - tak \n";
-            cout << "2 - nie \n";
-            cin >> confirm;
-        } while (confirm != 1 && confirm != 2);
-
+        DinnerSummaryEditShow();
         if (confirm == 2)
         {
             DinnerSummaryEdit();
@@ -184,23 +190,7 @@ void DinnerSummaryEdit()
 
 void SummaryDinnerNameShow()
 {
-    cout << "Podsumowanie \n\n";
-    cout << "Twoje wybory, to: \n\n";
-    for (int k = 0; k < 11; k++)
-    {
-        if (SummaryDinnerTab[k] != 0)
-        {
-            cout << Menu[k][1] << "\n iloœæ porcji: " << SummaryDinnerTab[k] << "\n Pozycja w menu: " << Menu[k][0];
-            cout << endl;
-            cout << "\n" << endl;
-        }
-    }
-    do {
-        cout << "Czy potwierdzasz swoje zamówienie? \n";
-        cout << "1 - tak \n";
-        cout << "2 - nie \n";
-        cin >> confirm;
-    } while (confirm != 1 && confirm != 2);
+    DinnerSummaryEditShow();
 
     if (confirm == 2)
     {
