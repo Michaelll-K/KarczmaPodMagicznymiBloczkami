@@ -34,9 +34,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="TestMenu.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
     <Text Include="TestProducts.txt">
       <Filter>Resource Files</Filter>
     </Text>
