@@ -9,11 +9,7 @@ void GetMenuOfProducts(string);
 
 void ShowMenu();
 
-void ShowDinnerAmountSummary();
-
 void SummaryDinnerNameShow();
-
-void DinnerSummaryEdit();
 
 void ShowFullVersionMenu();
 

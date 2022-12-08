@@ -7,8 +7,8 @@ using namespace std;
 
 string Menu[11][5];
 string Products[6][3];
-int SummaryDinnerTab[11] = { 0,0,0,0,0,0,0,0,0,0,0 };
 //tablica zbieraj¹ca iloœæ zamówionych rzeczy po indeksach
+int SummaryDinnerTab[11] = { 0,0,0,0,0,0,0,0,0,0,0 };
 int confirm;
 
 /// <summary>
@@ -84,7 +84,7 @@ void GetMenuOfProducts(string path)
 
 void ShowMenu()
 {
-    GetMenu("TestMenu.txt");
+    GetMenu("Menu.txt");
     cout << "Nasze aktualne menu: \n" << endl;
     for (int i = 0; i < 11; i++) 
     {
@@ -98,6 +98,7 @@ void ShowMenu()
 }
 
 
+//tablica do diagnozowania zamówienia pozycji na poszczególnych indeksach
 void ShowDinnerAmountSummary()
 {
     cout << "Tablica zamówionych rzeczy: ";
@@ -109,7 +110,6 @@ void ShowDinnerAmountSummary()
     cout << endl;
     cout << "\n" << endl;
 }
-//tablica do diagnozowania zamówienia pozycji na poszczególnych indeksach
 
 void DinnerSummaryEdit()
 {
