@@ -3,4 +3,4 @@
 
 using namespace std;
 
-string UserDish();
+int UserDish(int);

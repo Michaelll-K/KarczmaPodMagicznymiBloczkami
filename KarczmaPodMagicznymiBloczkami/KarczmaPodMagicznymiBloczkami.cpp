@@ -6,24 +6,31 @@
 #include <locale.h>
 #include <time.h>
 #include "MenuManager.h"
+#include "UserManager.h"
 
 using namespace std;
 
 bool ExitProgram;
 //Globalna zmienna uzupe³niana przez funkcjê GetMenu()
 extern string Menu[11][5];
+//Globalna zmienna przechowuj¹ca zamówienie u¿ytkownika
 extern int SummaryDinnerTab[11];
+//Globalna zmienna przechowuj¹ca sk³adniki dañ klienta
+extern string UserDishesDetails[5][2];
+
 class UserName
 {
 public: string userFirstName;
 public: string userSurname;
 };
+
 class UserAddress
 {
 public: string streetName;
 public: string streetNumber;
 public: string cityName;
 };
+
 UserAddress SetAddress()
 {
     UserAddress userAddress;
@@ -35,6 +42,7 @@ UserAddress SetAddress()
     cin >> userAddress.cityName;
     return userAddress;
 }
+
 int SetTableNumber()
 {
     srand(time(0));
@@ -42,6 +50,7 @@ int SetTableNumber()
     tableNumber = 1 + (rand() % 99);
     return tableNumber;
 }
+
 void DisplayRestaurantName()
 {
     cout << "******************************************" << endl;
@@ -57,12 +66,15 @@ void DisplayRestaurantName()
 int main()
 {
     setlocale(LC_ALL, "polish");
+
     ExitProgram = false;
     UserName userName;
     UserAddress userAddress;
     int selectOption = 0;
+
     while (ExitProgram != true)
     {
+        system("cls");
         ExitProgram = false;
         DisplayRestaurantName();
         cout << "Podaj swoje imiê: ";
@@ -88,6 +100,7 @@ int main()
             userAddress = SetAddress();
             cout << "Zamówienia mog¹ byæ otrzymywane w godzinach od 11 do 20" << endl;
             cout << "Podaj preferowan¹ godzinê otrzymania zamówienia: ";
+
             while (correctHour != true)
             {
                 int setOrderHour;
@@ -112,22 +125,26 @@ int main()
             cout << "Podaj inn¹ liczbê!" << endl;
             continue;
         }
-        if (selectOption == 3 || selectOption == 4 || correctHour == false)
+        if (selectOption == 3 || selectOption == 4)
             continue;
+
         cout << "Wybierz co chcesz zrobiæ, wpisuj¹c odpowiedni¹ cyfre" << endl;
         cout << "1. Zobacz menu i z³ó¿ zamówienie" << endl;
         cout << "2. Zacznij od nowa" << endl;
         cout << "3. Wy³¹cz aplikacje" << endl;
         cin >> selectOption;
+
         if (selectOption == 1)
         {
             system("cls");
             DisplayRestaurantName();
             ShowMenu();
 
+            
             int orderSize, dinnerNum, i, dinnerAmount, fullVersionMenu;
             cout << "Ile ³acznie pozycji z menu chcai³byœ zamóiæ? Wybierz, wpisuj¹c cyfrê z zakresu 1-11 \n";    //Zapytanie o ³¹czn¹ iloœæ porcji
             cin >> orderSize;
+
             if (orderSize < 1 || orderSize > 11)
             {
                 do
@@ -139,25 +156,38 @@ int main()
 
             cout << "\n\nWybierz zatem interesuj¹ce Ciebie pozycje \n";
             int j = 1;
+            int result = 0;
+
             for (i = 0; i < orderSize; i++)
             {
-                cout << "Podaj numer swojej " << j << " pozycji dania z menu (1 - 11) \n";        //wprowadzanie konkretnych pozycji z menuu do tablicy
+                cout << "Podaj numer swojej " << j << " pozycji dania z menu (1 - 11), 0 - zacznij od pocz¹tku, 12 - zakoñcz program \n";        //wprowadzanie konkretnych pozycji z menuu do tablicy
                 cin >> dinnerNum;
 
                 j += 1;
-                if (dinnerNum < 1 || dinnerNum > 11)
+
+                if (dinnerNum < 0 || dinnerNum > 12)
                 {
                     do
                     {
-                        cout << "\nNiepoprawna pozycja! WprowadŸ numer pozycji ponownie! (1 - 11)\n";
+                        cout << "\nNiepoprawna pozycja! WprowadŸ numer pozycji ponownie! (1 - 11), 0 - zacznij od pocz¹tku, 12 - zakoñcz program\n";
                         cin >> dinnerNum;
-                    } while (dinnerNum < 1 || dinnerNum>11);
+                    } while (dinnerNum < 0 || dinnerNum > 12);
+                }
+
+                if (dinnerNum == 0 || dinnerNum == 12)
+                {
+                    if (dinnerNum == 12)
+                        ExitProgram = true;
+
+                    result = 1;
+                    break;
                 }
 
                 cout << "\nPodaj iloœæ porcji z aktualnie wybranej pozycji. Maksymalnie mozesz maksymalnie zamowic 5 porcji kazdej z danej pozycji (aktualnie wybrana pozycja: " << dinnerNum << ") \n";
                 cin >> dinnerAmount;
                 cout << " \n\n";
-                if (dinnerAmount < 1 || dinnerAmount>5)
+
+                if (dinnerAmount < 1 || dinnerAmount > 5)
                 {
                     cout << "Niepoprawna iloœæ porcji! wybierz iloœæ porcji ponownie! \n";
                     do
@@ -167,23 +197,47 @@ int main()
                     } while (dinnerAmount < 1 || dinnerAmount > 5);
                 }
                 SummaryDinnerTab[dinnerNum - 1] = dinnerAmount;
+
+                if (dinnerNum == 11)
+                {
+                    for (int i = 0; i < dinnerAmount; i++)
+                    {
+                        result = UserDish(i);
+
+                        if (result == 1)
+                            break;
+                    }
+
+                    if (result == 1)
+                        break;
+                }
             }
+
+            if (result == 1)
+                continue;
 
             //Podsumowanie
 
-            SummaryDinnerNameShow();
+            if (SummaryDinnerNameShow() == 1)
+                continue;
 
-            cout << "Twoje finalne zamówienie, to: \n\n\n\n";
+            cout << "Twoje finalne zamówienie, to: \n\n";
             FinalOrderShow();
-            cout << "Czy chcesz wyœwietliæ wersjê pe³n¹ wybranych pozycji? 1 - tak, 2 - nie\n";
+            cout << endl;
+            cout << "Czy chcesz wyœwietliæ wersjê pe³n¹ wybranych pozycji? 0 - zacznij od nowa, 1 - tak, 2 - nie, 3 - zakoñcz program\n";
             cin >> fullVersionMenu;
+
             if (fullVersionMenu == 1)
             {
                 ShowFullVersionMenu();
             }
+            else if (fullVersionMenu == 0)
+            {
+                continue;
+            }
+
             ExitProgram = true;
             continue;
-
         }
         else if (selectOption == 2)
         {
@@ -196,9 +250,11 @@ int main()
             break;
         }
         else
+        {
             system("cls");
             cout << "Podaj inn¹ liczbê!" << endl;;
             continue;
+        }
     }
 
     return 0;

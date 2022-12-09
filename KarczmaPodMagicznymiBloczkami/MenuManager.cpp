@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <cstdio>
+#include "UserManager.h"
 
 using namespace std;
 
@@ -10,6 +11,9 @@ string Products[29][3];
 //tablica zbieraj¹ca iloœæ zamówionych rzeczy po indeksach
 int SummaryDinnerTab[11] = { 0,0,0,0,0,0,0,0,0,0,0 };
 int confirm;
+
+extern string UserDishesDetails[5][2];
+extern bool ExitProgram;
 
 /// <summary>
 /// Funkcja wype³nia tablicê dwuwymiarow¹ Menu[][] z ca³ym menu 
@@ -86,51 +90,38 @@ void ShowMenu()
 {
     GetMenu("Menu.txt");
     cout << "Nasze aktualne menu: \n" << endl;
+    cout << endl;
     for (int i = 0; i < 11; i++) 
     {
-        for (int j = 0; j < 5; j++) 
-        {
-            cout << Menu[i][j] << " ";
-        }
+        cout << Menu[i][0] << ". " << Menu[i][1] << " (" << Menu[i][3] << ")" << endl;
+        cout << "cena: " << Menu[i][2] << ", ostroœæ: " << Menu[i][4] << endl;
         cout << endl;
     }
     cout << "\n" << endl;
 }
 
-
-//tablica do diagnozowania zamówienia pozycji na poszczególnych indeksach
-void ShowDinnerAmountSummary()
-{
-    cout << "Tablica zamówionych rzeczy: ";
-    for (int k = 0; k < 11; k++) 
-    {
-        cout << SummaryDinnerTab[k];
-
-    }
-    cout << endl;
-    cout << "\n" << endl;
-}
-
-
 void DinnerSummaryEditShow()
 {
+    cout << endl;
     cout << "Podsumowanie \n\n";
     cout << "Twoje wybory, to: \n\n";
     for (int k = 0; k < 11; k++)
     {
         if (SummaryDinnerTab[k] != 0)
         {
-            cout << Menu[k][1] << "\n iloœæ porcji: " << SummaryDinnerTab[k] << "\n Pozycja w menu: " << Menu[k][0];
+            cout << Menu[k][1] << "\n Iloœæ porcji: " << SummaryDinnerTab[k] << "\n Pozycja w menu: " << Menu[k][0] << endl;
             cout << endl;
-            cout << "\n" << endl;
         }
     }
-    do {
+    do 
+    {
         cout << "Czy potwierdzasz swoje zamówienie? \n";
+        cout << "0 - rozpocznij jeszcze raz \n";
         cout << "1 - tak \n";
         cout << "2 - nie \n";
+        cout << "3 - zakoñcz program \n";
         cin >> confirm;
-    } while (confirm != 1 && confirm != 2);
+    } while (confirm != 1 && confirm != 2 && confirm != 0 && confirm != 3);
 
 }
 
@@ -151,7 +142,7 @@ void DinnerSummaryEdit()
         }
 
 
-        cout << "Podaj now¹ iloœæ porcji \n";
+        cout << "Podaj now¹ iloœæ porcji, wpisz 0 je¿eli chcesz usun¹æ pozycjê \n";
         cin >> dinnerPortionIndex;
 
         if (dinnerPortionIndex < 0 || dinnerPortionIndex > 5)
@@ -188,7 +179,7 @@ void DinnerSummaryEdit()
     cout << "Dobry wybór! \n";
 }
 
-void SummaryDinnerNameShow()
+int SummaryDinnerNameShow()
 {
     DinnerSummaryEditShow();
 
@@ -196,10 +187,21 @@ void SummaryDinnerNameShow()
     {
         DinnerSummaryEdit();
     }
-    else
+    else if (confirm == 1)
     {
         cout << "Dobry wybór! \n\n\n";
     }
+    else if (confirm == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        ExitProgram = true;
+        return 1;
+    }
+
+    return 0;
 }
 
 
@@ -209,14 +211,21 @@ void ShowFullVersionMenu() {
     cout << "Twoje wybory, to: \n\n";
     for (int k = 0; k < 11; k++)
     {
-        for (int l = 0; l < 5; l++)
+        if (SummaryDinnerTab[k] != 0)
         {
-            if (SummaryDinnerTab[k] != 0)
+            for (int i = 0; i < SummaryDinnerTab[k]; i++)
             {
-                cout << " " << Menu[k][l] << " ";
+                string ingredients = Menu[k][3];
+                string spiciness = Menu[k][4];
+                if (k == 10)
+                {
+                    ingredients = UserDishesDetails[i][0];
+                    spiciness = UserDishesDetails[i][1];
+                }
+                cout << " " << Menu[k][0] << ". " << Menu[k][1] << "(" << ingredients << "), cena:" << Menu[k][2] << ", ostoœæ: " << spiciness << endl;
+                cout << endl;
             }
         }
-        cout << endl;
     }
 }
 
@@ -226,9 +235,8 @@ void FinalOrderShow() {
     {
         if (SummaryDinnerTab[k] != 0)
         {
-            cout << Menu[k][1] << "\n iloœæ porcji: " << SummaryDinnerTab[k] << "\n Pozycja w menu: " << Menu[k][0];
+            cout << Menu[k][1] << "\n iloœæ porcji: " << SummaryDinnerTab[k] << "\n Pozycja w menu: " << Menu[k][0] << endl;
             cout << endl;
-            cout << "\n" << endl;
         }
     }
 }
