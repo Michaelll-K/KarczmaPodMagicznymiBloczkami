@@ -11,6 +11,9 @@ string UserDishesDetails[5][2];
 
 extern string Products[29][3];
 extern bool ExitProgram;
+extern string Menu[11][5];
+extern int SummaryDinnerTab[11];
+extern bool OnSite;
 
 /// <summary>
 /// Funkcja do obs³ugi tworzenia dania klienta
@@ -90,4 +93,56 @@ int UserDish(int iteration)
 	UserDishesDetails[iteration][0] = finalProducts;
 	UserDishesDetails[iteration][1] = to_string(spiciness);
 	return 0;
+}
+
+int DeliveryTime()
+{
+	int summdel = 30 + rand() % 151;
+
+	cout << summdel << endl;
+
+	return summdel;
+}
+
+int CalculatePrice(int dishindex)
+{
+	int singlePrice = std::stoi(Menu[dishindex][2]);
+	int multipler = SummaryDinnerTab[dishindex];
+
+	int price = singlePrice * multipler;
+	return price;
+}
+
+void UserSummary(string userName, string surname, string streetName, string streetNumber, string cityName, int tableNumber)
+{
+	fstream bill;
+	bill.open("order.txt", ios::out);
+	//tutaj trzeba wyczyœciæ plik, ¿eby by³ pusty (order.txt)
+	for (int i = 0; i < 11; i++) 
+	{
+		if (SummaryDinnerTab[i] > 0)
+			bill << Menu[i][1] << " x" << SummaryDinnerTab[i] << ": " << CalculatePrice(i) << " z³otych monet" << endl;
+	}
+	cout << "Imie: " << userName << endl;
+	cout << "Nazwisko: " << surname<< endl;
+	bill << endl;
+	bill << "Imie: " << userName << endl;
+	bill << "Nazwisko: " << surname << endl;
+	if (OnSite)
+	{
+		cout << "Numer stolika: " << tableNumber << endl;
+		bill << "Numer stolika: " << tableNumber << endl;
+	}
+	else
+	{
+		cout << "Planowany czas dostawy w minutach wynosi: " << endl;
+		int randnum = DeliveryTime();
+		bill << "Planowany czas dostawy w minutach wynosi: " << endl;
+		bill << randnum << endl;
+		cout << endl;
+		cout << "Adres dostawy: " << streetName << " " << streetNumber << ", " << cityName << endl;
+		bill << "Adres dostawy: " << streetName << " " << streetNumber << ", " << cityName << endl;
+	}
+
+	bill.close();
 }
