@@ -11,6 +11,7 @@
 using namespace std;
 
 bool ExitProgram;
+bool OnSite;
 //Globalna zmienna uzupe³niana przez funkcjê GetMenu()
 extern string Menu[11][5];
 //Globalna zmienna przechowuj¹ca zamówienie u¿ytkownika
@@ -90,15 +91,17 @@ int main()
         cout << "3. Zacznij od nowa" << endl;
         cout << "4. WyjdŸ z aplikacji" << endl;
         cin >> selectOption;
+        int setTableNumber = 0;
         switch (selectOption)
         {
         case 1: 
-            int setTableNumber;
             setTableNumber = SetTableNumber();
             cout << "Zapraszamy do stolika: " << setTableNumber << endl;
+            OnSite = true;
             break;
         case 2:
             userAddress = SetAddress();
+            OnSite = false;
             break;
         case 3:
             system("cls");
@@ -221,6 +224,12 @@ int main()
             {
                 continue;
             }
+            string name = userName.userFirstName;
+            string surname = userName.userSurname;
+            string userStreet = userAddress.streetName;
+            string streetNumber = userAddress.streetNumber;
+            string cityName = userAddress.cityName;
+            UserSummary(name, surname, userStreet, streetNumber, cityName, setTableNumber);
 
             ExitProgram = true;
             continue;
