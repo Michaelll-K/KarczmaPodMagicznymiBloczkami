@@ -58,7 +58,7 @@ void DisplayRestaurantName()
     cout << "******************************************" << endl;
     cout << "Pod Magicznymi Bloczkami" << endl;
     cout << "Adres: Collegium Da Vinci" << endl;
-    cout << "W³aœciciel: Ged, zwany Kroulcem" << endl;
+    cout << "W³aœciciel: Ged, zwany Krogulcem" << endl;
     cout << "Godziny otwarcia: 10:00-20:00" << endl;
     cout << "******************************************" << endl;
 }
@@ -84,13 +84,12 @@ int main()
         cout << "Podaj swoje nazwisko: ";
         cin >> userName.userSurname;
         cout << "Witamy " << userName.userFirstName << " " << userName.userSurname << '!' << endl;
-        cout << "Wybierz co chcesz zrobiæ, wpisuj¹c odpowiedni¹ cyfre" << endl;
+        cout << "Wybierz co chcesz zrobiæ, wpisuj¹c odpowiedni¹ cyfrê" << endl;
         cout << "1. Jedzenie na miejscu" << endl;
-        cout << "2. Jedzenie na wynos" << endl;
+        cout << "2. Dostawa na wskazany adres" << endl;
         cout << "3. Zacznij od nowa" << endl;
-        cout << "4. Opuœæ program" << endl;
+        cout << "4. WyjdŸ z aplikacji" << endl;
         cin >> selectOption;
-        bool correctHour = false;
         switch (selectOption)
         {
         case 1: 
@@ -100,21 +99,6 @@ int main()
             break;
         case 2:
             userAddress = SetAddress();
-            cout << "Zamówienia mog¹ byæ otrzymywane w godzinach od 11 do 20" << endl;
-            cout << "Podaj preferowan¹ godzinê otrzymania zamówienia: ";
-
-            while (correctHour != true)
-            {
-                int setOrderHour;
-                cin >> setOrderHour;
-                if (setOrderHour < 11 || setOrderHour > 20)
-                {
-                    cout << "Nieprwid³owa godzina! Przypominamy ¿e zamówienia na dowóz s¹ realizowane w godzinach od 11 do 20." << endl;
-                    correctHour = false;
-                }
-                else
-                    correctHour = true;
-            }
             break;
         case 3:
             system("cls");
@@ -130,10 +114,10 @@ int main()
         if (selectOption == 3 || selectOption == 4)
             continue;
 
-        cout << "Wybierz co chcesz zrobiæ, wpisuj¹c odpowiedni¹ cyfre" << endl;
+        cout << "Wybierz co chcesz zrobiæ, wpisuj¹c odpowiedni¹ cyfrê" << endl;
         cout << "1. Zobacz menu i z³ó¿ zamówienie" << endl;
         cout << "2. Zacznij od nowa" << endl;
-        cout << "3. Wy³¹cz aplikacje" << endl;
+        cout << "3. WyjdŸ z aplikacji" << endl;
         cin >> selectOption;
 
         if (selectOption == 1)
@@ -144,14 +128,14 @@ int main()
 
             
             int orderSize, dinnerNum, i, dinnerAmount, fullVersionMenu;
-            cout << "Ile ³acznie pozycji z menu chcai³byœ zamóiæ? Wybierz, wpisuj¹c cyfrê z zakresu 1-11 \n";    //Zapytanie o ³¹czn¹ iloœæ porcji
+            cout << "Ile ³¹cznie pozycji z menu chcesz zamówiæ? Wybierz, wpisuj¹c cyfrê z zakresu 1-11 \n";    //Zapytanie o ³¹czn¹ iloœæ porcji
             cin >> orderSize;
 
             if (orderSize < 1 || orderSize > 11)
             {
                 do
                 {
-                    cout << "\n\n Maksymalna ilosc pozycji w naszym menu wynosi 11! Wybierz wartoœæ pomiêdzy 1 a 11!\n";
+                    cout << "\n\n Maksymalna ilosc pozycji w naszym menu wynosi 11! Wybierz cyfrê z zakresu 1-11!\n";
                     cin >> orderSize;
                 } while (orderSize < 1 || orderSize>11);
             }
@@ -162,7 +146,7 @@ int main()
 
             for (i = 0; i < orderSize; i++)
             {
-                cout << "Podaj numer swojej " << j << " pozycji dania z menu (1 - 11), 0 - zacznij od pocz¹tku, 12 - zakoñcz program \n";        //wprowadzanie konkretnych pozycji z menuu do tablicy
+                cout << "Podaj numer swojej " << j << " pozycji dania z menu (1 - 11), 0 - zacznij od nowa, 12 - wyjdŸ z aplikacji \n";        //wprowadzanie konkretnych pozycji z menuu do tablicy
                 cin >> dinnerNum;
 
                 j += 1;
@@ -171,7 +155,7 @@ int main()
                 {
                     do
                     {
-                        cout << "\nNiepoprawna pozycja! WprowadŸ numer pozycji ponownie! (1 - 11), 0 - zacznij od pocz¹tku, 12 - zakoñcz program\n";
+                        cout << "\nNiepoprawna pozycja! WprowadŸ numer pozycji ponownie! (1 - 11), 0 - zacznij od nowa, 12 - wyjdŸ z aplikacji\n";
                         cin >> dinnerNum;
                     } while (dinnerNum < 0 || dinnerNum > 12);
                 }
@@ -185,16 +169,16 @@ int main()
                     break;
                 }
 
-                cout << "\nPodaj iloœæ porcji z aktualnie wybranej pozycji. Maksymalnie mozesz maksymalnie zamowic 5 porcji kazdej z danej pozycji (aktualnie wybrana pozycja: " << dinnerNum << ") \n";
+                cout << "\nPodaj iloœæ porcji z aktualnie wybranej pozycji. Maksymalnie mo¿esz zamówiæ 5 porcji z danej pozycji (aktualnie wybrana pozycja: " << dinnerNum << ") \n";
                 cin >> dinnerAmount;
                 cout << " \n\n";
 
                 if (dinnerAmount < 1 || dinnerAmount > 5)
                 {
-                    cout << "Niepoprawna iloœæ porcji! wybierz iloœæ porcji ponownie! \n";
+                    cout << "Niepoprawna iloœæ porcji! Wybierz iloœæ porcji ponownie! \n";
                     do
                     {
-                        cout << "Podaj iloœæ porcji z aktualnie wybranej pozycji. Maksymalnie mo¿esz zamówiæ 5 porcji ka¿dej z danej pozycji (aktualnie wybrana pozycja: " << dinnerNum << ") \n";
+                        cout << "Podaj iloœæ porcji z aktualnie wybranej pozycji. Maksymalnie mo¿esz zamówiæ 5 porcji z danej pozycji (aktualnie wybrana pozycja: " << dinnerNum << ") \n";
                         cin >> dinnerAmount;
                     } while (dinnerAmount < 1 || dinnerAmount > 5);
                 }
@@ -226,7 +210,7 @@ int main()
             cout << "Twoje finalne zamówienie, to: \n\n";
             FinalOrderShow();
             cout << endl;
-            cout << "Czy chcesz wyœwietliæ wersjê pe³n¹ wybranych pozycji? 0 - zacznij od nowa, 1 - tak, 2 - nie, 3 - zakoñcz program\n";
+            cout << "Czy chcesz wyœwietliæ pe³n¹ wersjê wybranych pozycji? 0 - zacznij od nowa, 1 - tak, 2 - nie, 3 - wyjdŸ z aplikacji\n";
             cin >> fullVersionMenu;
 
             if (fullVersionMenu == 1)

@@ -94,7 +94,7 @@ void ShowMenu()
     for (int i = 0; i < 11; i++) 
     {
         cout << Menu[i][0] << ". " << Menu[i][1] << " (" << Menu[i][3] << ")" << endl;
-        cout << "cena: " << Menu[i][2] << ", ostroœæ: " << Menu[i][4] << endl;
+        cout << "Cena: " << Menu[i][2] << ", ostroœæ: " << Menu[i][4] << endl;
         cout << endl;
     }
     cout << "\n" << endl;
@@ -116,10 +116,10 @@ void DinnerSummaryEditShow()
     do 
     {
         cout << "Czy potwierdzasz swoje zamówienie? \n";
-        cout << "0 - rozpocznij jeszcze raz \n";
+        cout << "0 - zacznij od nowa \n";
         cout << "1 - tak \n";
         cout << "2 - nie \n";
-        cout << "3 - zakoñcz program \n";
+        cout << "3 - wyjdŸ z aplikacji \n";
         cin >> confirm;
     } while (confirm != 1 && confirm != 2 && confirm != 0 && confirm != 3);
 
@@ -149,7 +149,7 @@ int DinnerSummaryEdit()
         {
             do
             {
-                cout << "Niepoprawna iloœæ porcji! WprowadŸ numer porcji ponownie (1 - 5), lub wpisz 0, ¿eby zrezygnowaæ z tej pozycji! \n";
+                cout << "Niepoprawna iloœæ porcji! WprowadŸ iloœæ porcji ponownie (1 - 5), lub wpisz 0, ¿eby zrezygnowaæ! \n";
                 cin >> dinnerPortionIndex;
             } while (dinnerPortionIndex < 0 || dinnerPortionIndex>5);
         }
@@ -252,7 +252,7 @@ void FinalOrderShow() {
     {
         if (SummaryDinnerTab[k] != 0)
         {
-            cout << Menu[k][1] << "\n iloœæ porcji: " << SummaryDinnerTab[k] << "\n Pozycja w menu: " << Menu[k][0] << endl;
+            cout << Menu[k][1] << "\n Iloœæ porcji: " << SummaryDinnerTab[k] << "\n Pozycja w menu: " << Menu[k][0] << endl;
             cout << endl;
         }
     }
