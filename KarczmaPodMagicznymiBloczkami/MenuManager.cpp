@@ -6,7 +6,7 @@
 using namespace std;
 
 string Menu[11][5];
-string Products[6][3];
+string Products[29][3];
 //tablica zbieraj¹ca iloœæ zamówionych rzeczy po indeksach
 int SummaryDinnerTab[11] = { 0,0,0,0,0,0,0,0,0,0,0 };
 int confirm;

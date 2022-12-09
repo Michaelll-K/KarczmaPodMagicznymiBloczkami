@@ -7,7 +7,7 @@
 
 using namespace std;
 
-extern string Products[6][3];
+extern string Products[29][3];
 extern bool ExitProgram;
 
 /// <summary>
@@ -20,7 +20,7 @@ string UserDish()
 	cout << "Œwietnie! Wybra³eœ nasz¹ specjaln¹ pozycjê, teraz mo¿esz wybraæ sk³adniki z jakich bêdzie sk³adaæ siê Twoje danie" << endl;
 	cout << endl;
 
-	GetMenuOfProducts("TestProducts.txt");
+	GetMenuOfProducts("Ingredients.txt");
 
 	cout << "Oto lista naszych produktów: " << endl;
 
