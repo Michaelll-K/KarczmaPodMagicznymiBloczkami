@@ -125,7 +125,7 @@ void DinnerSummaryEditShow()
 
 }
 
-void DinnerSummaryEdit()
+int DinnerSummaryEdit()
 {
     do {
         int dinnerIndex;
@@ -154,6 +154,12 @@ void DinnerSummaryEdit()
             } while (dinnerPortionIndex < 0 || dinnerPortionIndex>5);
         }
 
+        int userDishResult = 0;
+        if (dinnerIndex == 11)
+            userDishResult = UserDish(dinnerPortionIndex - 1);
+
+        if (userDishResult == 1)
+            return 1;
 
         SummaryDinnerTab[dinnerIndex - 1] = dinnerPortionIndex;
         cout << "Twoje zamówienie teraz to: \n";
@@ -162,9 +168,15 @@ void DinnerSummaryEdit()
         {
             DinnerSummaryEdit();
         }
-        else
+        else if (confirm == 1)
         {
             cout << "Dobry wybór! \n\n\n";
+        }
+        else
+        {
+            if (confirm == 3)
+                ExitProgram = true;
+            return 1;
         }
 
         if (confirm != 1 && confirm != 2)
@@ -177,6 +189,7 @@ void DinnerSummaryEdit()
         }
     } while (confirm == 2);
     cout << "Dobry wybór! \n";
+    return 0;
 }
 
 int SummaryDinnerNameShow()
@@ -185,7 +198,10 @@ int SummaryDinnerNameShow()
 
     if (confirm == 2)
     {
-        DinnerSummaryEdit();
+        int result = DinnerSummaryEdit();
+
+        if (result == 1)
+            return 1;
     }
     else if (confirm == 1)
     {
@@ -206,7 +222,8 @@ int SummaryDinnerNameShow()
 
 
 
-void ShowFullVersionMenu() {
+void ShowFullVersionMenu() 
+{
     cout << "Podsumowanie \n\n";
     cout << "Twoje wybory, to: \n\n";
     for (int k = 0; k < 11; k++)

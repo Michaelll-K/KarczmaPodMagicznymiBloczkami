@@ -75,6 +75,8 @@ int main()
     while (ExitProgram != true)
     {
         system("cls");
+        for (int i = 0; i < 11; i++)
+            SummaryDinnerTab[i] = 0;
         ExitProgram = false;
         DisplayRestaurantName();
         cout << "Podaj swoje imiê: ";
