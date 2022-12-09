@@ -46,7 +46,7 @@ int UserDish(int iteration)
 
 	cout << endl;
 	cout << "Wybierz 0 aby rozpocz¹æ jeszcze raz, wybierz 31 aby wyjœæ z aplikacji" << endl;
-	cout << "Wybierz z listy interesuj¹ce Ciê produkty (1 - 29), wpisz 30 aby zakoñczyæ dodawnaie: " << endl;
+	cout << "Wybierz z listy interesuj¹ce Ciê produkty (1 - 29), wpisz 30 aby zakoñczyæ dodawanie: " << endl;
 	cout << "Pierwszy produkt: ";
 	cin >> choosenProduct;
 
