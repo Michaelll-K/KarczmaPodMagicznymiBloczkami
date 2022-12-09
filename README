@@ -1,0 +1,49 @@
+-------------------------------------------------------------------------------MANUAL----------------------------------------------------------------------------------
+
+0. Aby poprawnie złożyć zamówienie poprzez program, należy używać tylko i wyłącznie cyfr. Chyba, że komunikat wyświetlany mówi inaczej.
+(np. w momecnie pytania o imię i nazwisko)
+
+1. Program domyślnie uruchamia się, witając nas i prosząc o podanie imienia oraz nazwiska zamawiającego. 
+
+2. Po podaniu podstawowych danych wyświetla się wstęp do całego programu, gdzie mamy do wyboru opcje takie, jak: zamówienie na miejscu lub w dostawie, rozpoczęcie
+programu od nowa, lub zakończenie programu i wyjście z niego.
+
+3. Aby przejść do właściwej części programu, należy wpisać 1 lub 2. Należy podać cyfrę od 1 do 4.
+
+4. 
+a) Wybierając opcję "Jedzenie na miejscu", zostaje nam przydzielony numer stolika (jest to zawsze numer z zakresu 1-99). 
+Na tym etapie mamy możliwość przejścia do menu Karczmy i złożenie zamówienia, rozpoczęcie programu od początku lub wyjście z programu.
+
+b) Wybierając opcję "Dostawa na wskazany adres", jesteśmy proszeni o podanie adresu do dostarczenia zamówienia, 
+aby zamówienie mogło zostać dostarczone.
+
+5. Następnie wyświetlane jest aktualne menu Karczmy. Znaleźć tu możemy takie informacje jak: numer pozycji, nazwa dania, składniki, cena oraz poziom ostrości.
+Skala ostrości jest wyrażana poprzez cyfry 0-3, gdzie 3 jest najwyższym poziomem ostrości.
+
+6. W następnej kolejności, jesteśmy proszeni o podanie łącznej ilości poszczególnych pozycji(!) z menu 
+(np. danie nr. 1 i danie nr. 5 = wpisujemy 2 - liczy się ilość pozycji, a nie ilość poszczególnych dań)!
+
+7. Po wprowadzeniu ilości pozycji, wybieramy kolejno: numer pozycji z menu dania, które chcemy zamówić, a następnie ilość porcji tego dania. 
+Podczas wyboru nr. pozycji, mamy również możliwość wyjścia z programu, lub zaczęcia zamawiania od nowa.
+
+8. Pozycji w menu jest 11 i wpisanie innej cyfry niż z zakresu 1-11, będzie skutkowało pojawieniem się informacji o błędnej liczbie i ponowieniem wyboru.
+Taka sama sytuacja wystąpi podczas wyboru ilości porcji (max. 5).
+
+9. Gdy zakończymy wybór pozycji oraz ilości dań, zwracane jest podsumowanie wyborów użytkownika i prośba o potwierdzenie zamówienia. 
+Możemy na tym etapie: zakończyć program, potwierdzić lub też nie zamówienie, albo rozpocząć program od nowa.
+
+10.
+a) Wybierając opcję "nie", pojawi się tryb edycji zamówienia. Możemy tu zmodyfikować ilość porcji wybranych dań, zrezygnować z któregoś z dań, 
+lub nawet dodać nowe dania wraz z ilością.
+
+b) Wybierając opcję "tak", przejdziemy do pytania o wyświetlenie pełnego opisu dania (w takiej postaci, w jakiej widnieje w menu).
+
+11. Użytkownik nie musi wyświetlać pełnej wersji menu. Wybierając opcję "nie", jest możliwość pominięcia wyświetlenia pełnej wersji podsumowania swojego zamówienia, rozpoczęcia programu od nowa jak i zakończenia programu.
+
+12. Po wyświetleniu, bądź pominięciu wyświetlenia pełnego opisu zamówionych dań, wyświetlane jest podsumowanie z podanymi przez użytkownika danymi na początku programu, jego stolik (jeżeli zamawiał na miejscu),
+oraz całe złożone zamówienie, wraz z ceną, które jest zapisywane w pliku order.txt. Jeżeli zamówienie zostało złożone z opcją dowozu, wyświetlany jest adres dostawy. Całe zamówienie jak i cena zapisywane również w pliku order.txt
+
+
+
+Życzymy miłego korzystania z programu!
+Team Karczma Pod Magicznymi Bloczkami 
