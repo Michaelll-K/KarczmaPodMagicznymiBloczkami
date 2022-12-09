@@ -149,7 +149,7 @@ void DinnerSummaryEdit()
         {
             do
             {
-                cout << "Niepoprawna iloœæ porcji! WprowadŸ numer pozycji ponownie (1 - 5), lub wpisz 0, ¿eby zrezygnowaæ! \n";
+                cout << "Niepoprawna iloœæ porcji! WprowadŸ iloœæ porcji ponownie (1 - 5), lub wpisz 0, ¿eby zrezygnowaæ! \n";
                 cin >> dinnerPortionIndex;
             } while (dinnerPortionIndex < 0 || dinnerPortionIndex>5);
         }

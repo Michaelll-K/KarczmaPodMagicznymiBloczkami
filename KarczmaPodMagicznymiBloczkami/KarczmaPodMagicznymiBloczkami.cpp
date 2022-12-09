@@ -84,11 +84,10 @@ int main()
         cout << "Witamy " << userName.userFirstName << " " << userName.userSurname << '!' << endl;
         cout << "Wybierz co chcesz zrobiæ, wpisuj¹c odpowiedni¹ cyfrê" << endl;
         cout << "1. Jedzenie na miejscu" << endl;
-        cout << "2. Jedzenie na wynos" << endl;
+        cout << "2. Dostawa na wskazany adres" << endl;
         cout << "3. Zacznij od nowa" << endl;
         cout << "4. WyjdŸ z aplikacji" << endl;
         cin >> selectOption;
-        bool correctHour = false;
         switch (selectOption)
         {
         case 1: 
@@ -98,21 +97,6 @@ int main()
             break;
         case 2:
             userAddress = SetAddress();
-            cout << "Zamówienia mog¹ byæ otrzymywane w godzinach od 11:00 do 20:00" << endl;
-            cout << "Podaj preferowan¹ godzinê otrzymania zamówienia: ";
-
-            while (correctHour != true)
-            {
-                int setOrderHour;
-                cin >> setOrderHour;
-                if (setOrderHour < 11 || setOrderHour > 20)
-                {
-                    cout << "Nieprawid³owa godzina! Przypominamy, ¿e zamówienia na dowóz s¹ realizowane w godzinach od 11:00 do 20:00." << endl;
-                    correctHour = false;
-                }
-                else
-                    correctHour = true;
-            }
             break;
         case 3:
             system("cls");
