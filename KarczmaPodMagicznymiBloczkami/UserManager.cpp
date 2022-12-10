@@ -106,7 +106,7 @@ int DeliveryTime()
 
 int CalculatePrice(int dishindex)
 {
-	int singlePrice = std::stoi(Menu[dishindex][2]);
+	int singlePrice = stoi(Menu[dishindex][2]);
 	int multipler = SummaryDinnerTab[dishindex];
 
 	int price = singlePrice * multipler;
@@ -115,19 +115,34 @@ int CalculatePrice(int dishindex)
 
 void UserSummary(string userName, string surname, string streetName, string streetNumber, string cityName, int tableNumber)
 {
+	int finalPrice = 0;
+
 	fstream bill;
 	bill.open("order.txt", ios::out);
-	//tutaj trzeba wyczyœciæ plik, ¿eby by³ pusty (order.txt)
+	
+	cout << "Imie: " << userName << endl;
+	cout << "Nazwisko: " << surname<< endl;
+	cout << endl;
+	bill << "Imie: " << userName << endl;
+	bill << "Nazwisko: " << surname << endl;
+	bill << endl;
+	
 	for (int i = 0; i < 11; i++) 
 	{
 		if (SummaryDinnerTab[i] > 0)
+		{
 			bill << Menu[i][1] << " x" << SummaryDinnerTab[i] << ": " << CalculatePrice(i) << " z³otych monet" << endl;
+			cout << Menu[i][1] << " x" << SummaryDinnerTab[i] << ": " << CalculatePrice(i) << " z³otych monet" << endl;
+
+			finalPrice += SummaryDinnerTab[i] * stoi(Menu[i][2]);
+		}
 	}
-	cout << "Imie: " << userName << endl;
-	cout << "Nazwisko: " << surname<< endl;
-	bill << endl;
-	bill << "Imie: " << userName << endl;
-	bill << "Nazwisko: " << surname << endl;
+
+	cout << endl;
+	cout << "Do zap³aty: " << finalPrice << " z³otych monet" << endl;
+	bill << "Do zap³aty: " << finalPrice << " z³otych monet" << endl;
+	cout << endl;
+
 	if (OnSite)
 	{
 		cout << "Numer stolika: " << tableNumber << endl;
