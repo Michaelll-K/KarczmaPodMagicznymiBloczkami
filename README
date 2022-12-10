@@ -33,8 +33,7 @@ Taka sama sytuacja wystąpi podczas wyboru ilości porcji (max. 5).
 Możemy na tym etapie: zakończyć program, potwierdzić lub też nie zamówienie, albo rozpocząć program od nowa.
 
 10.
-a) Wybierając opcję "nie", pojawi się tryb edycji zamówienia. Możemy tu zmodyfikować ilość porcji wybranych dań, zrezygnować z któregoś z dań, 
-lub nawet dodać nowe dania wraz z ilością.
+a) Wybierając opcję "nie", pojawi się tryb edycji zamówienia. Możemy tu zmodyfikować ilość porcji wybranych dań, zrezygnować z któregoś z dań, lub nawet dodać nowe dania wraz z ilością.
 
 b) Wybierając opcję "tak", przejdziemy do pytania o wyświetlenie pełnego opisu dania (w takiej postaci, w jakiej widnieje w menu).
 
