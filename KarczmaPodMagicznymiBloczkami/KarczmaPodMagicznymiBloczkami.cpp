@@ -224,12 +224,8 @@ int main()
             {
                 continue;
             }
-            string name = userName.userFirstName;
-            string surname = userName.userSurname;
-            string userStreet = userAddress.streetName;
-            string streetNumber = userAddress.streetNumber;
-            string cityName = userAddress.cityName;
-            UserSummary(name, surname, userStreet, streetNumber, cityName, setTableNumber);
+
+            UserSummary(userName.userFirstName, userName.userSurname, userAddress.streetName, userAddress.streetNumber, userAddress.cityName, setTableNumber);
 
             ExitProgram = true;
             continue;
